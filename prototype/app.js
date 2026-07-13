@@ -1,3 +1,5 @@
+import './styles.css';
+
 const screens = {
   command: "Executive Command Center",
   pipeline: "Client DAG Workspace",
