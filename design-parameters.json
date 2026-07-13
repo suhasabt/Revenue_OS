@@ -1,0 +1,25 @@
+{
+  "projectName": "",
+  "brand": {
+    "name": "",
+    "primaryColor": "#0056c1",
+    "logoPath": "",
+    "fontFamily": "DM Sans, sans-serif"
+  },
+  "product": {
+    "type": "dashboard",
+    "audience": "",
+    "density": "dense",
+    "navigation": "sidebar",
+    "mobilePriority": "medium"
+  },
+  "screens": [],
+  "overrides": {
+    "colors": {},
+    "radius": {},
+    "typography": {},
+    "spacing": {}
+  },
+  "references": []
+}
+

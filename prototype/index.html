@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BeeForce RevenueOS Prototype</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <div class="brand-mark">B</div>
+          <div>
+            <div class="brand-name">BeeForce</div>
+            <div class="brand-product">RevenueOS</div>
+          </div>
+        </div>
+
+        <nav class="tab-nav" id="navList" aria-label="Primary navigation">
+          <button class="nav-item active" data-screen="command" data-tooltip="Command" aria-label="Command" type="button">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h7v6H4zM13 5h7v6h-7zM4 13h7v6H4zM13 13h7v6h-7z"/></svg>
+            <span class="nav-label">Command</span>
+          </button>
+          <button class="nav-item" data-screen="pipeline" data-tooltip="Client DAGs" aria-label="Client DAGs" type="button">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 7a3 3 0 1 0 0.1 0M16 5h4v4h-4zM16 15h4v4h-4zM8 7h8M8 8.5l8 7M8 5.5l8 11"/></svg>
+            <span class="nav-label">Client DAGs</span>
+          </button>
+          <button class="nav-item" data-screen="stakeholders" data-tooltip="Power Map" aria-label="Power Map" type="button">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8a3 3 0 1 0 0.1 0M17 7a2.5 2.5 0 1 0 0.1 0M16 16a3 3 0 1 0 0.1 0M11.5 9.5l3 4M14.5 8.5l-3 5"/></svg>
+            <span class="nav-label">Power Map</span>
+          </button>
+          <button class="nav-item" data-screen="assessment" data-tooltip="Assessment" aria-label="Assessment" type="button">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v16H7zM9 8h6M9 12h6M9 16h3"/></svg>
+            <span class="nav-label">Assessment</span>
+          </button>
+          <button class="nav-item" data-screen="governance" data-tooltip="Gates" aria-label="Gates" type="button">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l7 3v5c0 4-2.8 7-7 8-4.2-1-7-4-7-8V7zM9 12l2 2 4-5"/></svg>
+            <span class="nav-label">Gates</span>
+          </button>
+          <button class="nav-item" data-screen="agents" data-tooltip="Agents" aria-label="Agents" type="button">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9h8v7H8zM10 5h4v4h-4zM6 12H4M20 12h-2M9.5 13h0M14.5 13h0M10 18h4"/></svg>
+            <span class="nav-label">Agents</span>
+          </button>
+          <button class="nav-item" data-screen="settings" data-tooltip="Admin" aria-label="Admin" type="button">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0.1 0M12 3v3M12 18v3M4.2 7.5l2.6 1.5M17.2 15l2.6 1.5M4.2 16.5l2.6-1.5M17.2 9l2.6-1.5"/></svg>
+            <span class="nav-label">Admin</span>
+          </button>
+        </nav>
+
+        <div class="header-actions">
+          <select id="clientSelect" aria-label="Select client"></select>
+          <select id="roleSelect" aria-label="Role view">
+            <option value="rep">Account Executive</option>
+            <option value="founder">Founder</option>
+            <option value="manager">Sales Manager</option>
+            <option value="admin">Admin</option>
+          </select>
+          <button class="primary-button icon-text-button" type="button" id="openActionBtn" data-tooltip="New Action" aria-label="New Action">
+            <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            <span>New Action</span>
+          </button>
+        </div>
+      </header>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="topbar-context">
+            <div class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb"></div>
+            <h1 id="screenTitle">Executive Command Center</h1>
+          </div>
+          <div class="topbar-actions">
+            <div class="search">
+              <span>/</span>
+              <input id="searchInput" type="search" placeholder="Search deals, stakeholders, gates" />
+            </div>
+          </div>
+        </header>
+
+        <section class="screen active" id="command">
+          <div class="view-strip">
+            <button class="view-chip active" type="button">Overview</button>
+            <button class="view-chip" type="button">Forecast</button>
+            <button class="view-chip" type="button">Risks</button>
+            <button class="view-chip" type="button">Activity</button>
+          </div>
+          <div class="metric-grid">
+            <article class="metric-card">
+              <div class="metric-label">Strategic pipeline</div>
+              <div class="metric-value">Rs 18.4Cr</div>
+              <div class="metric-delta good">+22% weighted</div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-label">Forecast accuracy</div>
+              <div class="metric-value">87%</div>
+              <div class="metric-delta good">Above target</div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-label">Deals blocked</div>
+              <div class="metric-value">6</div>
+              <div class="metric-delta warn">3 need founder touch</div>
+            </article>
+            <article class="metric-card">
+              <div class="metric-label">Proposal turnaround</div>
+              <div class="metric-value">1.8d</div>
+              <div class="metric-delta good">50% faster</div>
+            </article>
+          </div>
+
+          <div class="content-grid command-grid">
+            <section class="panel wide-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Revenue Health</h2>
+                  <p>Deal health from coverage, MAP, sentiment, and gates.</p>
+                </div>
+                <button class="small-button" type="button" data-screen-link="pipeline">View DAG</button>
+              </div>
+              <div class="health-layout">
+                <div class="score-ring" aria-label="Revenue health score 82 percent">
+                  <span>82%</span>
+                  <small>Health</small>
+                </div>
+                <div class="health-bars">
+                  <div class="bar-row"><span>Stakeholder coverage</span><div><i style="width:86%"></i></div><b>86%</b></div>
+                  <div class="bar-row"><span>MAP progress</span><div><i style="width:64%"></i></div><b>64%</b></div>
+                  <div class="bar-row"><span>Exec sentiment</span><div><i style="width:78%"></i></div><b>78%</b></div>
+                  <div class="bar-row"><span>Qualification completeness</span><div><i style="width:91%"></i></div><b>91%</b></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head compact">
+                <h2>Executive Alerts</h2>
+                <span class="badge danger">3 critical</span>
+              </div>
+              <div class="alert-list" id="alertList"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head compact">
+                <h2>Client Snapshot</h2>
+                <span class="badge blue">Selected</span>
+              </div>
+              <div class="deal-list" id="dealList"></div>
+            </section>
+
+            <section class="panel wide-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>AI Signal Feed</h2>
+                  <p>Outreach, scripts, decks, meetings, and proposals generated from DAG context.</p>
+                </div>
+                <button class="small-button" type="button" id="refreshSignals">Refresh</button>
+              </div>
+              <div class="signal-table" id="signalTable"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="pipeline">
+          <div class="toolbar">
+            <div class="view-strip segmented" id="personaTabs">
+              <button class="active" data-persona="all" type="button">All</button>
+              <button data-persona="rep" type="button">Rep</button>
+              <button data-persona="founder" type="button">Founder</button>
+              <button data-persona="legal" type="button">Legal</button>
+              <button data-persona="cs" type="button">CS</button>
+            </div>
+          </div>
+          <div class="client-summary" id="clientSummary"></div>
+          <div class="conversation-strip" id="conversationStrip"></div>
+          <section class="panel canvas-panel" id="canvasPanel">
+            <div class="panel-head">
+              <div>
+                <h2>Client DAG Workspace</h2>
+                <p>Run platform outreach, AI scripts, decks, tasks, and gate checks from each node.</p>
+              </div>
+              <div class="canvas-tools" aria-label="Canvas controls">
+                <button class="small-button icon-only" type="button" id="zoomOut" data-tooltip="Zoom out" aria-label="Zoom out">-</button>
+                <button class="small-button" type="button" id="zoomReset" data-tooltip="Reset zoom" aria-label="Reset zoom">86%</button>
+                <button class="small-button icon-only" type="button" id="zoomIn" data-tooltip="Zoom in" aria-label="Zoom in">+</button>
+                <button class="small-button icon-only" type="button" id="dagFullscreen" data-tooltip="Fullscreen" aria-label="Toggle fullscreen">
+                  <svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h5M4 4v5M20 4h-5M20 4v5M4 20h5M4 20v-5M20 20h-5M20 20v-5"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="dag-canvas" id="dagCanvas" aria-label="Infinite DAG canvas"></div>
+            <div class="canvas-dock" aria-label="Canvas tools">
+              <button type="button" data-tool="mail" data-tooltip="Mail Suite" aria-label="Mail Suite"><svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span>Mail Suite</span></button>
+              <button type="button" data-tool="linkedin" data-tooltip="LinkedIn" aria-label="LinkedIn"><svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9h3v10H5zM5 5h3v2H5zM11 9h3v2c0-1 1.2-2.2 3-2.2 2.1 0 3 1.3 3 3.8V19h-3v-5.8c0-1-.4-1.7-1.4-1.7-1.1 0-1.6.8-1.6 1.9V19h-3z"/></svg><span>LinkedIn</span></button>
+              <button type="button" data-tool="deck" data-tooltip="Demo Deck" aria-label="Demo Deck"><svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H4zM8 20h8M12 17v3M8 9h8M8 12h5"/></svg><span>Demo Deck</span></button>
+              <button type="button" data-tool="script" data-tooltip="Scripts" aria-label="Scripts"><svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h4"/></svg><span>Scripts</span></button>
+              <button type="button" data-tool="ai" data-tooltip="AI Copilot" aria-label="AI Copilot"><svg class="app-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9h8v7H8zM10 5h4v4h-4zM6 12H4M20 12h-2M10 13h0M14 13h0M10 18h4"/></svg><span>AI</span></button>
+            </div>
+          </section>
+        </section>
+
+        <section class="screen" id="stakeholders">
+          <div class="content-grid stakeholder-grid">
+            <section class="panel wide-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Stakeholder Power Map</h2>
+                  <p>Critical buyers, influence, sentiment, and risk.</p>
+                </div>
+                <button class="small-button" type="button" id="addStakeholderBtn">Add Stakeholder</button>
+              </div>
+              <div class="stakeholder-map" id="stakeholderMap"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head compact">
+                <h2>Relationship Actions</h2>
+                <span class="badge warn">4 open</span>
+              </div>
+              <div class="task-list" id="relationshipTasks"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="assessment">
+          <div class="content-grid assessment-grid">
+            <section class="panel">
+              <div class="panel-head compact">
+                <h2>Assessment Builder</h2>
+                <span class="badge green">AI adaptive</span>
+              </div>
+              <div class="assessment-stack" id="assessmentStack"></div>
+            </section>
+            <section class="panel wide-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Workforce Maturity Report</h2>
+                  <p>Scores and gaps by workforce governance area.</p>
+                </div>
+                <button class="small-button" type="button" id="generateReport">Generate Report</button>
+              </div>
+              <div class="report-grid" id="reportGrid"></div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="governance">
+          <div class="content-grid governance-grid">
+            <section class="panel wide-panel">
+              <div class="panel-head">
+                <div>
+                  <h2>Sales Governance Gates</h2>
+                  <p>Stage movement is blocked until required evidence exists.</p>
+                </div>
+                <span class="badge danger">Strict mode</span>
+              </div>
+              <div class="gate-grid" id="gateGrid"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head compact">
+                <h2>Blocked Deal Detail</h2>
+                <span class="badge warn">Frozen</span>
+              </div>
+              <div class="blocker-card">
+                <div class="blocker-title">Nova Retail Services</div>
+                <p>No economic buyer identified and stakeholder coverage is below four critical roles.</p>
+                <div class="blocker-actions">
+                  <button class="small-button" type="button">Assign Owner</button>
+                  <button class="small-button danger-text" type="button">Request Override</button>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="screen" id="agents">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>AI Agent Mesh</h2>
+                <p>Agents create cited outputs for human review.</p>
+              </div>
+              <span class="badge blue">10 agents</span>
+            </div>
+            <div class="agent-grid" id="agentGrid"></div>
+          </section>
+        </section>
+
+        <section class="screen" id="settings">
+          <div class="content-grid settings-grid">
+            <section class="panel">
+              <div class="panel-head compact">
+                <h2>Module Configuration</h2>
+                <span class="badge blue">Admin</span>
+              </div>
+              <div class="toggle-list" id="moduleList"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-head compact">
+                <h2>Integration Status</h2>
+                <span class="badge green">Connected</span>
+              </div>
+              <div class="integration-list" id="integrationList"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="workspace-modal" id="stageWorkspace" aria-hidden="true">
+      <div class="workspace-panel">
+        <div class="workspace-top">
+          <div class="workspace-heading">
+            <div class="workspace-breadcrumbs" id="workspaceBreadcrumbs" aria-label="Workspace breadcrumb"></div>
+            <div class="workspace-client" id="workspaceClient">Client workspace</div>
+            <h2 id="workspaceTitle">Stage Workspace</h2>
+          </div>
+          <button class="icon-button close-workspace" type="button" data-tooltip="Close" aria-label="Close">x</button>
+        </div>
+        <div id="workspaceContent"></div>
+      </div>
+    </div>
+
+    <div class="modal" id="actionModal" aria-hidden="true">
+      <div class="modal-panel">
+        <div class="panel-head">
+          <div>
+            <h2 id="modalTitle">Create Action</h2>
+            <p id="modalSub">Create or send from RevenueOS.</p>
+          </div>
+          <button class="icon-button close-modal" type="button" data-tooltip="Close" aria-label="Close">x</button>
+        </div>
+        <form class="action-form" id="actionForm">
+          <label>Client <input id="modalClient" value="" readonly /></label>
+          <label>Owner <input value="Meera Sharma" /></label>
+          <label>Action <textarea>Send CHRO follow-up from RevenueOS and attach the AI-generated deck.</textarea></label>
+          <button class="primary-button" type="submit">Save Action</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
